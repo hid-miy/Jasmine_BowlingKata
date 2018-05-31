@@ -32,12 +32,19 @@ class Bowling {
     }
     return (sum == 10)
   }
+  
+  isPreviousStrike(index) {
+    var isStrike = false
+    if (index > 0 && this.pins[index - 1] == 10 && this.isFrameFirst[index - 1]) isStrike = true
+    if (index > 1 && this.pins[index - 2] == 10 && this.isFrameFirst[index - 2]) isStrike = true
+    return isStrike
+  }
 
   score() {
     var sum = 0
     for (var i in this.pins) {
       sum += this.pins[i]
-      if (this.isPreviousSpare(i)) {
+      if (this.isPreviousSpare(i) || this.isPreviousStrike(i)) {
         sum += this.pins[i]
       }
     }
