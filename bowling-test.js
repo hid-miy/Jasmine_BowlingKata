@@ -30,14 +30,20 @@ describe('Spare test', function() {
 
   it("if spare, score add after 1 roll", function() {
     var sut = new Bowling()
-    sut.rollByArray([5, 5, 5])
-    expect(sut.score()).to.eql(20);
+    sut.rollByArray([5, 5, 1])
+    expect(sut.score()).to.eql(12);
   });
 
   it("if spare, score add after 1 roll", function() {
     var sut = new Bowling()
     sut.rollByArray([0, 10, 5])
     expect(sut.score()).to.eql(20);
+  });
+
+  it("two time spares", function() {
+    var sut = new Bowling()
+    sut.rollByArray([0, 10, 5, 5, 4])
+    expect(sut.score()).to.eql(33);
   });
 
   it("false spare", function() {
@@ -52,7 +58,7 @@ describe('Strike test', function() {
 
   it("if Strike, score add after 2 roll", function() {
     var sut = new Bowling()
-    sut.rollByArray([2, 2, 10, 3, 3])
+    sut.rollByArray([2, 2, 10, 1, 2])
     expect(sut.score()).to.eql(20);
   });
 
