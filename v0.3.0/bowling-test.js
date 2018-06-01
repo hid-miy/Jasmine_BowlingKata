@@ -54,6 +54,17 @@ describe('Testing spare functions', function() {
 
 })
 
+describe('Testing strike functions', function() {
+
+  it("after strike, score should add a bonus", function() {
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(3)
+    expect(bowling.score()).to.eql(10 + 6 + 6);
+  });
+
+})
+
 
 mocha.checkLeaks();
 mocha.run();
