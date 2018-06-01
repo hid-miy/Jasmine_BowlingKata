@@ -28,7 +28,7 @@ describe('Testing basic functions', function() {
     expect(bowling.score()).to.eql(1);
   });
 
-  it("1 pin is 20 time, score should be 20", function() {
+  it("1 pin is 20 time, score is 20", function() {
     bowling.rollMany(1, 20)
     expect(bowling.score()).to.eql(20);
   });
@@ -42,6 +42,14 @@ describe('Testing spare functions', function() {
     bowling.roll(5)
     bowling.roll(3)
     expect(bowling.score()).to.eql(16);
+  });
+
+  it("after false spare, score should not add a bonus", function() {
+    bowling.roll(2)
+    bowling.roll(5)
+    bowling.roll(5)
+    bowling.roll(2)
+    expect(bowling.score()).to.eql(14);
   });
 
 })
