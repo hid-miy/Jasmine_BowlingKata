@@ -4,59 +4,63 @@ var expect = chai.expect;
 chai.Should();
 
 
-var sut = null;
+var bowling = null;
 beforeEach(function() {
-  sut = new Bowling()
+  
+  /* Test helper method */
+  Bowling.prototype.rollMany = function(pins, times) {
+    while (times--) this.roll(pins)
+  }
+
+  bowling = new Bowling()
 })
 
-describe('Basic test', function() {
 
-  it("all gutter, score is 0", function() {
-    sut.rollMany(0, 20)
-    expect(sut.score()).to.eql(0);
+describe('Testing basic functions', function() {
+
+  it("gutter is 1 time, score should be 0", function() {
+    bowling.roll(0)
+    expect(bowling.score()).to.eql(0);
   });
 
-  it("1 roll 1pin, score is 1", function() {
-    sut.roll(1)
-    expect(sut.score()).to.eql(1);
+  it("1 pin is 1 time, score should be 1", function() {
+    bowling.roll(1)
+    expect(bowling.score()).to.eql(1);
   });
 
-  it("20 roll 1pin, score is 20", function() {
-    sut.rollMany(1, 20)
-    expect(sut.score()).to.eql(20);
-  });
-
-})
-
-describe('Spare test', function() {
-
-  it("if spare, score add after 1 roll", function() {
-    sut.rollByArray([5, 5, 1])
-    expect(sut.score()).to.eql(12);
-  });
-
-  it("if spare, score add after 1 roll", function() {
-    sut.rollByArray([0, 10, 5])
-    expect(sut.score()).to.eql(20);
-  });
-
-  it("two time spares", function() {
-    sut.rollByArray([0, 10, 5, 5, 4])
-    expect(sut.score()).to.eql(33);
-  });
-
-  it("false spare", function() {
-    sut.rollByArray([2, 5, 5, 2])
-    expect(sut.score()).to.eql(14);
+  it("1 pin is 20 time, score is 20", function() {
+    bowling.rollMany(1, 20)
+    expect(bowling.score()).to.eql(20);
   });
 
 })
 
-describe('Strike test', function() {
+describe('Testing spare functions', function() {
 
-  it("if Strike, score add after 2 roll", function() {
-    sut.rollByArray([2, 2, 10, 1, 2])
-    expect(sut.score()).to.eql(20);
+  it("after spare, score should add a bonus", function() {
+    bowling.roll(5)
+    bowling.roll(5)
+    bowling.roll(3)
+    expect(bowling.score()).to.eql(10 + 3 + 3);
+  });
+
+  it("after false spare, score should not add a bonus", function() {
+    bowling.roll(2)
+    bowling.roll(5)
+    bowling.roll(5)
+    bowling.roll(2)
+    expect(bowling.score()).to.eql(7 + 7);
+  });
+
+})
+
+describe('Testing strike functions', function() {
+
+  it("after strike, score should add a bonus", function() {
+    bowling.roll(10)
+    bowling.roll(3)
+    bowling.roll(3)
+    expect(bowling.score()).to.eql(10 + 6 + 6);
   });
 
 })
