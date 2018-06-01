@@ -1,8 +1,21 @@
-<div>
-  <div id="mocha"></div>
+<html>
+  <head>
+      <!-- import test-framework libs from CDN -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.css" />
+  </head>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.css" />
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.min.js"></script>
-
-</div>
+  <body>
+    <div>
+      <div id="mocha"></div>
+    
+      <!-- import test-framework libs from CDN -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.min.js"></script>
+    
+      <!-- [v0.1.0.] load testee and tester scripts -->
+      <script type="text/javascript" src="v0.1.0/bowling.js"></script>
+      <script type="text/javascript" src="v0.1.0/bowling-test.js"></script>
+      
+    </div>
+</body>
+</html>
