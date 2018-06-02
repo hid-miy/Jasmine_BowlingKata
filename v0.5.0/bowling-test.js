@@ -36,6 +36,26 @@ describe('Testing basic functions', function() {
     expect(bowling.score()).to.eql(20);
   });
 
+  it("score example from http://www.tokibow.com/tbchp/score.htm", function() {
+    bowling.rollByArray([6, 3, 9, 0, 0, 3, 8, 2, 7, 3, 10, 9, 1, 8, 0, 10, 10, 6, 4]);
+    expect(bowling.score()).to.eql(150);
+  });
+
+  it("score example from http://renai-jyoujyu.net/bowling-score", function() {
+    bowling.rollByArray([8, 0, 7, 2, 0, 5, 7, 3, 9, 1, 10, 8, 2, 7, 0, 10, 10, 7, 3]);
+    expect(bowling.score()).to.eql(152);
+  });
+
+  it("score example from http://renai-jyoujyu.net/bowling-score", function() {
+    bowling.rollByArray([10, 10, 10, 10, 8, 0, 0, 0, 7, 3, 0, 9, 8, 1, 5, 5, 7]);
+    expect(bowling.score()).to.eql(159);
+  });
+
+  it("score example from https://nageyo.com/score/", function() {
+    bowling.rollByArray([9, 1, 8, 0, 10, 10, 9, 0, 10, 10, 10, 7, 3, 9, 1, 10]);
+    expect(bowling.score()).to.eql(199);
+  });
+  
 })
 
 describe('Testing spare functions', function() {
